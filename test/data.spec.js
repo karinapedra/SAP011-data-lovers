@@ -19,7 +19,21 @@ describe('filterCharactersByName', () => {
     const searchName = filterCharactersByName(characters, '');
     expect(searchName).toEqual(characters);
   });
+  it('deve retornar os personagens quando o searchName estiver vazio', () => {
+    const characters = [
+      { firstName: 'Jon Snow' },
+      { firstName: 'Daenerys Targaryen' },
+      { firstName: 'Tyrion Lannister' },
+      { firstName: 'Arya Stark' },
+      { firstName: 'Cersei Lannister' },
+    ];
+    const searchName = filterCharactersByName(characters, 'Jon Snow');
+    expect(searchName).toEqual([characters[0]]);
+  });
 });
+
+
+
 
 describe('sortCharactersByFullName', () => {
   it('is a function', () => {
@@ -33,6 +47,17 @@ describe('sortCharactersByFullName', () => {
     { fullName: 'Arya Stark' },
     { fullName: 'Cersei Lannister' },
   ];
+  it('deve retornar o personagem em ordem descendente', () => {
+    const sortedDescending = sortCharactersByFullName(characters, '');
+    /*const expected = [
+      { fullName: 'Tyrion Lannister' },
+      { fullName: 'Jon Snow' },
+      { fullName: 'Daenerys Targaryen' },
+      { fullName: 'Cersei Lannister' },
+      { fullName: 'Arya Stark' },
+    ];*/
+    expect(sortedDescending).toEqual(characters);
+  });
 
   it('deve retornar o personagem em ordem ascendente', () => {
     const sortedAscending = sortCharactersByFullName(characters, 'a-z');
